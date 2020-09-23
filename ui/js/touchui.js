@@ -1,5 +1,8 @@
 export class TouchUi {
-    constructor() {        
+    constructor() {   
+        $("#video-back-button").on("click", function() {
+            TouchUi.stateEntertainmentMain();
+        });
     }
 
     buildEntertainmentMediaGrid(metadata) {    
@@ -9,14 +12,18 @@ export class TouchUi {
         for (let i = 0; i < metadata.length; i++) {
             let item = metadata[i];
             let card = $('<div class="col-sm">' +
-                            '<div class="card" style="width: 15rem; margin: 5px">' +
+                            '<div class="card mediacard">' +
                                 '<div class="card-body">' +
-                                    '<img src="' + item.poster + '" class="card-img-top" onclick="TouchUi.stateEntertainmentVideoPlay(\'' + item.media + '\', \'' + item.poster + '\')">' +                         
+                                    '<img src="' + item.poster + '" class="card-img-top">' +                         
                                     '<h5 class="card-title">' + item.title + '</h5>' +
                                     '<h6 class="card-subtitle mb-2 text-muted">' + item.year + '</h6>' +
                                 '</div>' +
                             '</div>' +                        
                         '</div>').appendTo("#video-cards");
+
+            card.find("img").on("click", function() {
+                TouchUi.stateEntertainmentVideoPlay(item.media, item.poster);
+            });                        
         }    
     }
 

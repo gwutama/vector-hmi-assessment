@@ -1,0 +1,19 @@
+#main {
+    padding-top: 60px;
+}
+
+#video-back-button {
+    position: absolute; 
+    left: 10px; 
+    top: 10px
+}
+
+#video-player {
+    position: absolute; 
+    z-index: -1;    
+}
+
+.mediacard {
+    width: 15rem; 
+    margin: 5px;
+}
